@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:14:42 by legarcia          #+#    #+#             */
-/*   Updated: 2023/03/14 18:20:32 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:30:21 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<stdio.h>
@@ -52,10 +52,10 @@ write(1, "point", 5);
 while ( --count > -1)
 {
 	count2 = count; 
-	while(--count2 > 0 && count2 < count)
+	while(--count2 > -1)
 	{
 	  getchar();
-	  if(!ft_memcmp(&argv[count][0], &argv[count2][0], ft_strlen(&argv[count][0])))
+	  if(ft_memcmp(&argv[count][0], &argv[count2][0], ft_strlen(&argv[count][0])) == 0)
 			return(write(1, "3Error\n", 7));
 
 	}
