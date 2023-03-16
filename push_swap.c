@@ -6,60 +6,95 @@
 /*   By: legarcia <legarcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:14:42 by legarcia          #+#    #+#             */
-/*   Updated: 2023/03/14 18:30:21 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/03/16 19:57:12 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include<stdio.h>
 #include<unistd.h>
 #include"libft_ok/libft.h"
-int ft_isnotnumbers(char *str)
+//retorna 1 si las cadenas de caracteres de str son numeros
+//retorna 0 si las cadenas de carracteres de str son distintas a numeros
+//argc es la cantidad de cadenas de caracteres existentes, si argc es >  a la matriz str ---> SEGmentation fault.
+static int ft_isnumbers(int argc, char **str)
 {
-int	count;
-
-
-count = 0;
-	while (str[count])
-{
-	if( str[0] == '-' && count == 0)
-		count++;
-	if (!ft_isdigit(str[count]))
-		return(1);
-	count++;
+	int	x;
+	int	y;
+	y = 0;
+	x = 0;
+	while (++x < argc)
+	{
+		if( str[x][y] == '-' && y == 0 && str[x][y+1])
+			y++;
+		while (str[x][y])
+		{
+			if (ft_isdigit(str[x][y]))
+				y++;
+			else
+				return(0);
+		}
+	y = 0;
+	}
+	return(1);
 }
 
+//Buscado cadenas duplicadas en la matriz argv.
+//retorna 1 si hay cadenas duplicadas, caso contrari retorna 0
+static int ft_havedupli(int argc, char **argv)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while(++x < argc)
+	{
+		y = x ;
+		while (++y < argc)
+		{
+			if(ft_strlen(&argv[x][0]) == ft_strlen(&argv[y][0]) 
+				&&	!ft_memcmp(&argv[x][0], &argv[y][0], ft_strlen(&argv[y][0])))
+				return(1);
+		}
+	}
+	return(0);				
+}
+//recibe numeros en formato char, y busca que este en rango int.
+//si esta en rango retorna 1 
+//int max 2147483647, int min -2147483648
+static int ft_isnuminrange(int argc, char **argv)
+{
+	int	x;
+
+	x = 0;
+	while(++x < argc)
+	{
+		if(ft_strlen(&argv[x][0]) == 11	&&	argv[x][0] == '-' && 
+			ft_strncmp(&argv[x][0], "-2147483648", 11) > 0)
+				return(0);
+		else if(ft_strlen(&argv[x][0]) == 10	&&
+				ft_strncmp(&argv[x][0], "2147483647", 10) > 0)
+			return(0);
+		else if(ft_strlen(&argv[x][0]) > 11)
+			return(0);
+	}
+	return(1);				
+}
+
+// chequea que argv sean numeros enteros en rango(INT) y no esten duplicdos.
+// 
+int ft_checkerr (int argc, char **argv)
+{
+	
+	if (!ft_isnumbers(argc, argv) || ft_havedupli(argc,argv) || !ft_isnuminrange(argc, argv))
+		return(1);
 	return(0);
 }
 
 int main (int argc, char **argv)
 {
-	int	*stack;
-	int	count;
-	int	count2;
-	count = 0;
-	
 	if (argc <= 1) //chequeo que si hay datos
 		return(0);
-stack = malloc( argc * sizeof(int)); ///genero un malloc para chequear los numeros que se ingresan son correctos
-if(!stack)
-	return(write(1, "1Error\n", 7));
-while ( count < argc - 1)
-{
-	if( ft_isnotnumbers(&argv[count + 1][0]))
-			return(write(1, "2Error\n", 7));
-	count++;
+	if (ft_checkerr(argc, argv))
+		write(1, "Error\n", 6);
+	return(0);
 }
-write(1, "point", 5);
-while ( --count > -1)
-{
-	count2 = count; 
-	while(--count2 > -1)
-	{
-	  getchar();
-	  if(ft_memcmp(&argv[count][0], &argv[count2][0], ft_strlen(&argv[count][0])) == 0)
-			return(write(1, "3Error\n", 7));
 
-	}
-}
-free(stack);
-return(0);
-}
