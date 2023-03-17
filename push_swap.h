@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: legarcia <legarcia@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/17 17:42:46 by legarcia          #+#    #+#             */
-/*   Updated: 2023/03/17 19:25:50 by legarcia         ###   ########.fr       */
+/*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
+/*   Updated: 2023/03/17 19:13:54 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include<unistd.h>
+# include<stdio.h>
+# include "libft_ok/libft.h"
 
-#include"push_swap.h"
+int	ft_checkerr(int argc, char **argv);
 
-int	main (int	argc, char	**argv)
-{
-	if (argc < 1)
-		return (0);
-
-ft_putnbr_fd(argc, 1);
-
-		if (ft_checkerr(argc, argv))
-		return(write(1, "Error\n", 6));
-
-}
+#endif
