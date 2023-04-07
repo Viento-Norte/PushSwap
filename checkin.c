@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include<stdio.h>
 #include<unistd.h>
-#include"libft_ok/libft.h"
+#include"push_swap.h"
 
 //retorna 1 si las cadenas de caracteres de str son numeros
 //retorna 0 si las cadenas de carracteres de str son distintas a numeros

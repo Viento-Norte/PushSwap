@@ -11,14 +11,9 @@
 /* ************************************************************************** */
 
 #include"push_swap.h"
-#include"libft_ok/libft.h"
+//#include"libft_ok/libft.h"
 
-typedef struct s_stcklist
-{
-	int	num;
-	int	pos;
-	struct s_stcklist	*next;
-}	t_stcklist;
+
 
 t_stcklist	*newstckelt(int numb, int pos)
 {
@@ -64,35 +59,55 @@ void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 	*lst = new;
 }
 
+///////////////////Debugging elements/////////////////
+void printstack(t_stcklist stack)
+{
+	int n;
+
+	n = -1;
+	while(stack.next)
+	{
+		ft_putnbr_fd(stack.num, 1);
+		write(1, "\t", 1);
+		ft_putnbr_fd(stack.pos, 1);
+		enter();
+		stack = *stack.next;
+	}
+//	ft_putnbr_fd(stack.num, 1);
+//	write(1, "\t", 1);
+//	ft_putnbr_fd(stack.pos, 1);
+//	enter();
+}
 void enter()
 {
 	write(1, "\n",1);
 }
 
 //**********************************************************//
-int	main (int	argc, char	**argv)
+//con argc > 2 hay por lo menos 2 elementos a ordenar
+/*int	main (int	argc, char	**argv)
 {
 	t_stcklist	*stkA;
 	int n;
-stkA = NULL;
+	stkA = NULL;
 	n = 1;
 	ft_putnbr_fd(argc, 1);
 	write(1,"\n",1);
-	if (argc < 1)
+	if (argc <= 2)
 		return (0);
 	if (ft_checkerr(argc, argv))
 		return(write(1, "Error\n", 6));
-stkA = newstckelt(ft_atoi(argv[n]), n);
-while( ++n < argc)
+	stkA = newstckelt(ft_atoi(argv[n]), n);
+	while( ++n < argc)
 	ft_stcklstadd_back(&stkA,newstckelt(ft_atoi(argv[n]), n ));
-while( --n > argc)
+	while( --n > argc)
 	ft_stcklstadd_front(&stkA,newstckelt(ft_atoi(argv[n]), (ft_stcklstlast(stkA))->pos +10 ));
 	
 //ft_putnbr_fd(stkA->num, 1);
 //write(1, "\n",1);
-ft_putnbr_fd((stkA->next)->pos, 1);
-enter();
-ft_putnbr_fd((stkA->next)->num, 1);
+	ft_putnbr_fd((stkA->next)->pos, 1);
+	enter();
+	ft_putnbr_fd((stkA->next)->num, 1);
 
 return(0);
-}
+}*/

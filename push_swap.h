@@ -13,8 +13,19 @@
 # define PUSH_SWAP_H
 # include<unistd.h>
 # include<stdio.h>
-# include "libft_ok/libft.h"
+# include "Libft_ok/libft.h"
+typedef struct s_stcklist
+{
+	int	num;
+	int	pos;
+	struct s_stcklist	*next;
+}	t_stcklist;
 
 int	ft_checkerr(int argc, char **argv);
-
+t_stcklist	*newstckelt(int numb, int pos);
+t_stcklist	*ft_stcklstlast(t_stcklist *lst);
+void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new);
+void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new);
+void printstack(t_stcklist stack);
+void enter();
 #endif
