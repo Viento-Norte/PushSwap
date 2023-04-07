@@ -13,9 +13,12 @@
 NAME	= push_swap
 #----------------------Source program-------------------------------------------
 
-SRCS	= push_swap.c checkin.c
+SRCS	= push_swap.c checkin.c main.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS	= ${SRCS:.c=.o} 
+
+DEPS = $(SRCS:.c=.d)
+#DEPS	= ${SRCS:.c=.d}
 
 LIB = libft_ok/
 
@@ -23,21 +26,23 @@ CC	= gcc
 
 RM	= rm -f
 
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -MMD
 
-HEADERS = $(LIB)libft.h push_swap.h
+#HEADERS =  push_swap.h
 
-${NAME}:    ${OBJS} ${HEADERS}
-	$(MAKE) -C ${LIB} 
-	${CC} -o ${NAME} ${OBJS} ${LIB}libft.a
+all: 
+	$(MAKE) -C $(LIB)
+	$(MAKE) ${NAME}
+	
 
-all: ${NAME}
+${NAME}:   ${OBJS} ${LIB}libft.a
+	
+	${CC} -o ${NAME} ${OBJS} -L ${LIB} -lft
 
-libft:	
-		$(MAKE) -C $(LIB)
-
+%.o:%.c
+	${CC} ${CFLAGS} -I ${LIB} -c $< -o $@
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${DEPS}
 	$(MAKE) clean -C $(LIB)
 
 fclean: clean
@@ -45,5 +50,5 @@ fclean: clean
 	$(MAKE) fclean -C $(LIB)
 
 re: fclean all
-
-.PHONY: all clean fclean re
+-include $(DEPS)
+.PHONY: all clean fclean re 
