@@ -22,10 +22,10 @@ typedef struct s_stcklist
 }	t_stcklist;
 
 int	ft_checkerr(int argc, char **argv);
-t_stcklist	*newstckelt(int numb, int pos);
+t_stcklist	*newstckelt(int numb);
 t_stcklist	*ft_stcklstlast(t_stcklist *lst);
 void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new);
 void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new);
-void printstack(t_stcklist stack);
+void printstack(t_stcklist *stack);
 void enter();
 #endif

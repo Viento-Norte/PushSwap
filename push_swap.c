@@ -15,7 +15,7 @@
 
 
 
-t_stcklist	*newstckelt(int numb, int pos)
+t_stcklist	*newstckelt(int numb)
 {
 	t_stcklist	*nelt;
 
@@ -23,7 +23,7 @@ t_stcklist	*newstckelt(int numb, int pos)
 	if (!nelt)
 		return(NULL);
 	nelt->num = numb;
-	nelt->pos = pos;
+	nelt->pos = 1;
 	nelt->next = NULL;
 	return(nelt);
 }
@@ -46,6 +46,7 @@ void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 	if (*lst)
 	{
 		lst1 = ft_stcklstlast(*lst);
+		new->pos = lst1->pos + 1;
 		lst1->next = new;
 	}
 	else
@@ -53,30 +54,37 @@ void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 }
 void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 {
+	t_stcklist	*lst_swap;
 	if (!lst || !new)
 		return ;
 	new->next = *lst;
+	lst_swap = *lst;
+	while(lst_swap->next)
+	{
+		lst_swap->pos += 1;
+		lst_swap = lst_swap->next;
+	}
+	lst_swap->pos += 1;
 	*lst = new;
 }
 
 ///////////////////Debugging elements/////////////////
-void printstack(t_stcklist stack)
+void printstack(t_stcklist *stack)
 {
-	int n;
-
-	n = -1;
-	while(stack.next)
+	if (!stack)
+	return;
+	while(stack->next)
 	{
-		ft_putnbr_fd(stack.num, 1);
+		ft_putnbr_fd(stack->num, 1);
 		write(1, "\t", 1);
-		ft_putnbr_fd(stack.pos, 1);
+		ft_putnbr_fd(stack->pos, 1);
 		enter();
-		stack = *stack.next;
+		stack = stack->next;
 	}
-//	ft_putnbr_fd(stack.num, 1);
-//	write(1, "\t", 1);
-//	ft_putnbr_fd(stack.pos, 1);
-//	enter();
+	ft_putnbr_fd(stack->num, 1);
+	write(1, "\t", 1);
+	ft_putnbr_fd(stack->pos, 1);
+	enter();
 }
 void enter()
 {

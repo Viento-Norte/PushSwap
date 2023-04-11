@@ -18,7 +18,6 @@ SRCS	= push_swap.c checkin.c main.c
 OBJS	= ${SRCS:.c=.o} 
 
 DEPS = $(SRCS:.c=.d)
-#DEPS	= ${SRCS:.c=.d}
 
 LIB = libft_ok/
 
@@ -27,8 +26,6 @@ CC	= gcc
 RM	= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror -MMD
-
-#HEADERS =  push_swap.h
 
 all: 
 	$(MAKE) -C $(LIB)
