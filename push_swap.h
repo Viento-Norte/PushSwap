@@ -14,6 +14,7 @@
 # include<unistd.h>
 # include<stdio.h>
 # include "Libft_ok/libft.h"
+#	include<curses.h>
 typedef struct s_stcklist
 {
 	int	num;

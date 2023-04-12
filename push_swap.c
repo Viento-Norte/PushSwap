@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include"push_swap.h"
-//#include"libft_ok/libft.h"
-
 
 
 t_stcklist	*newstckelt(int numb)
@@ -65,7 +63,11 @@ void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 		lst_swap = lst_swap->next;
 	}
 	lst_swap->pos += 1;
+	
+	//getch();
+	enter();
 	*lst = new;
+	printstack(*lst);
 }
 
 ///////////////////Debugging elements/////////////////
@@ -90,32 +92,3 @@ void enter()
 {
 	write(1, "\n",1);
 }
-
-//**********************************************************//
-//con argc > 2 hay por lo menos 2 elementos a ordenar
-/*int	main (int	argc, char	**argv)
-{
-	t_stcklist	*stkA;
-	int n;
-	stkA = NULL;
-	n = 1;
-	ft_putnbr_fd(argc, 1);
-	write(1,"\n",1);
-	if (argc <= 2)
-		return (0);
-	if (ft_checkerr(argc, argv))
-		return(write(1, "Error\n", 6));
-	stkA = newstckelt(ft_atoi(argv[n]), n);
-	while( ++n < argc)
-	ft_stcklstadd_back(&stkA,newstckelt(ft_atoi(argv[n]), n ));
-	while( --n > argc)
-	ft_stcklstadd_front(&stkA,newstckelt(ft_atoi(argv[n]), (ft_stcklstlast(stkA))->pos +10 ));
-	
-//ft_putnbr_fd(stkA->num, 1);
-//write(1, "\n",1);
-	ft_putnbr_fd((stkA->next)->pos, 1);
-	enter();
-	ft_putnbr_fd((stkA->next)->num, 1);
-
-return(0);
-}*/
