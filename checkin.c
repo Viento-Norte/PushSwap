@@ -9,8 +9,6 @@
 /*   Updated: 2023/03/17 19:21:34 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include<stdio.h>
-#include<unistd.h>
 #include"push_swap.h"
 
 //retorna 1 si las cadenas de caracteres de str son numeros

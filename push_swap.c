@@ -56,20 +56,19 @@ void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 	if (!lst || !new)
 		return ;
 	new->next = *lst;
+	new->pos = 1;
 	lst_swap = *lst;
-	while(lst_swap->next)
+	
+	while(lst_swap && lst_swap->next)
 	{
 		lst_swap->pos += 1;
 		lst_swap = lst_swap->next;
 	}
+	if(lst_swap)
 	lst_swap->pos += 1;
 	
-	//getch();
-	enter();
 	*lst = new;
-	printstack(*lst);
 }
-
 ///////////////////Debugging elements/////////////////
 void printstack(t_stcklist *stack)
 {

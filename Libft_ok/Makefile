@@ -1,3 +1,5 @@
+MAKE = $(MAKE) --no-print-directory
+
 NAME	= libft.a
 
 
