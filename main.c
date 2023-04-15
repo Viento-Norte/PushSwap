@@ -65,5 +65,11 @@ printstack(stkA);
 enter();
 printstack(stkB);
 
+rev_rot_rot(&stkA, &stkB);
+write(1,"#################\n", 18);
+printstack(stkA);
+enter();
+printstack(stkB);
+
 return(0);
 }

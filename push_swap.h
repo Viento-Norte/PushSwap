@@ -33,5 +33,7 @@ void	swap_swap(t_stcklist	**stckA, t_stcklist **stckB);
 void	push(t_stcklist	**stckorg, t_stcklist	**stckdst, char *str);
 void	rotate(t_stcklist	**stck, char *str);
 void	rotate_twin(t_stcklist	**stcka,t_stcklist	**stckb);
+void	rev_rot(t_stcklist	**stck, char *str);
+void	rev_rot_rot(t_stcklist	**stcka,t_stcklist	**stckb);
 void	enter();
 #endif

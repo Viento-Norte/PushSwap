@@ -73,19 +73,32 @@ write(1,"rr\n",3);
 
 void	rev_rot(t_stcklist	**stck, char *str)
 {
+
+t_stcklist	*last;
 t_stcklist	*first;
-t_stcklist	*tmp;
+
 int	swap;
 
 if(!(*stck)->next)
 	return;
-fisrt = *stck;
-
+first = *stck;
+swap = first->num;
+last = ft_stcklstlast(*stck);
 while((*stck)->next)
-{
-	swap = (*stck)->num;
-	*
-}
+	{
+		(*stck)->num = last->num;
+		*stck = (*stck)->next;
+		last->num = swap;
+		swap = (*stck)->num; 
+	}	
+	(*stck)->num = last->num;
+	*stck = (*stck)->next;
 if(str)
 write(1, str, 3);
+}
+void	rev_rot_rot(t_stcklist	**stcka,t_stcklist	**stckb)
+{
+rotate(stcka,NULL);
+rotate(stckb,NULL);
+write(1,"rrr\n",4);
 }
