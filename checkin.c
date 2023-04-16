@@ -24,13 +24,10 @@ static int	ft_isnumbers(int argc, char **str)
 	x = 0;
 	while (++x < argc)
 	{
-		
 		if (str[x][y] == '\0')
 			return (0);
-	  
-		if (str[x][y] == '-' && y == 0 && str[x][y + 1])
+		if (str[x][y] == '-' && y == 0 && str[x][y + 1] != '0' && str[x][y + 1])
 			y++;
-
 		while (str[x][y])
 		{
 			if (ft_isdigit(str[x][y]))

@@ -9,12 +9,12 @@
 #    Updated: 2023/03/26 00:06:46 by legarcia         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-MAKE = $(MAKE) --no-print-directory
 #----------------------Name program---------------------------------------------
 NAME	= push_swap
 #----------------------Source program-------------------------------------------
-
-SRCS	= main.c push_swap.c checkin.c utils.c 
+MAKE_FLAGS = --no-print-directory
+SRCS	= main.c  checkin.c push.c reverse_rotate.c \
+			rotate.c swap.c functions_stacks.c utils.c #push_swap.c
 
 OBJS	= ${SRCS:.c=.o} 
 
@@ -24,15 +24,13 @@ LIB = libft_ok/
 
 CC	= gcc
 
-
-
 RM	= rm -f
 
 CFLAGS	= -Wall -Wextra -Werror -MMD
 
 all: 
-	MAKE -C $(LIB)
-	MAKE ${NAME}
+	 @$(MAKE) ${MAKE_FLAGS} -C $(LIB)
+	@$(MAKE) ${MAKE_FLAGS} ${NAME}
 	
 
 ${NAME}:   ${OBJS} ${LIB}libft.a
@@ -43,11 +41,11 @@ ${NAME}:   ${OBJS} ${LIB}libft.a
 	${CC} ${CFLAGS} -I ${LIB} -c $< -o $@
 clean:
 	${RM} ${OBJS} ${DEPS}
-	MAKE clean -C $(LIB)
+	@$(MAKE) ${MAKE_FLAGS} clean -C $(LIB)
 
 fclean: clean
 	${RM} ${NAME} 
-	MAKE fclean -C $(LIB)
+	@$(MAKE) ${MAKE_FLAGS} fclean -C $(LIB)
 
 re: fclean all
 -include $(DEPS)

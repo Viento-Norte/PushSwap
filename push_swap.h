@@ -15,25 +15,39 @@
 # include<stdio.h>
 # include "Libft_ok/libft.h"
 
+
 typedef struct s_stcklist
 {
-	int	num;
-	int	pos;
+	int					num;
+	int					pos;
 	struct s_stcklist	*next;
 }	t_stcklist;
 
-int	ft_checkerr(int argc, char **argv);
+typedef struct s_push_wap
+{
+	t_stcklist	*stacka;
+	t_stcklist	*stackb;
+}	t_push_swap;
+
+int			ft_checkerr(int argc, char **argv);
 t_stcklist	*newstckelt(int numb);
 t_stcklist	*ft_stcklstlast(t_stcklist *lst);
-void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new);
-void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new);
-void	printstack(t_stcklist *stack);
-void	swap_stack(t_stcklist	**stack, char *str);
-void	swap_swap(t_stcklist	**stckA, t_stcklist **stckB);
-void	push(t_stcklist	**stckorg, t_stcklist	**stckdst, char *str);
-void	rotate(t_stcklist	**stck, char *str);
-void	rotate_twin(t_stcklist	**stcka,t_stcklist	**stckb);
-void	rev_rot(t_stcklist	**stck, char *str);
-void	rev_rot_rot(t_stcklist	**stcka,t_stcklist	**stckb);
-void	enter();
+void		ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new);
+void		ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new);
+void		sa(t_push_swap	**pshswp);
+void		sb(t_push_swap	**pshswp);
+void		ss(t_push_swap	**pshswp);
+void		pa(t_push_swap	**pshswp);
+void		pb(t_push_swap	**pshswp);
+void		ra(t_push_swap **pshswp);
+void		rb(t_push_swap **pshswp);
+void		rr(t_push_swap **pshswp);
+void		rra(t_push_swap	**pshswp);
+void		rrb(t_push_swap	**pshswp);
+void		rrr(t_push_swap	**pshswp);
+//void		rev_rot(t_stcklist	**stck, char *str);
+//void		rev_rot_rot(t_stcklist	**stcka, t_stcklist	**stckb);
+////////////////////debugging elements/////////////
+void		enter(void);
+void		printstack(t_stcklist *stack);
 #endif
