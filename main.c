@@ -22,36 +22,39 @@ void	ft_free(t_push_swap	**pshswp)
 	t_stcklist	*stack;
 	if (!pshswp)
 		return ;
-	stack = ((*pshswp)->stacka)->next;
-	while(stack && stack->next)
+	if (((*pshswp)->stacka))
 	{
-		stack = ((*pshswp)->stacka)->next;
+		while((*pshswp) && ((*pshswp)->stacka)->next)
+		{
+			stack = ((*pshswp)->stacka)->next;
+			free((*pshswp)->stacka);
+			((*pshswp)->stacka) = stack;
+		}
 		free((*pshswp)->stacka);
-		((*pshswp)->stacka) = stack;
 	}
 if (((*pshswp)->stackb))
 {
-	stack = ((*pshswp)->stackb)->next;
-	while(stack && stack->next)
+		while((*pshswp) && ((*pshswp)->stackb)->next)
 	{
 		stack = ((*pshswp)->stackb)->next;
 		free((*pshswp)->stackb);
 		((*pshswp)->stackb) = stack;
 	}
+	free((*pshswp)->stackb);
 }
-free((*pshswp)->stacka);
-free((*pshswp)->stackb);
 free(*pshswp);
+exit(0);
 }
 
 int	main (int	argc, char	**argv)
 {
 	t_push_swap	*pshswp;
 	
-	if (argc <= 2)
-		return (0);
+	
 	if (ft_checkerr(argc, argv))
 		return(write(1, "Error\n", 6));
+	if (argc <= 2)
+		return (0);
 	pshswp = init( &argc,	argv);
 	if (!pshswp)
 		{
@@ -72,5 +75,8 @@ int	main (int	argc, char	**argv)
 	enter();
 	printstack(pshswp->stackb);
 	enter();
+	ft_putnbr_fd(lst_len(pshswp->stackb), 1);
 	ft_free(&pshswp);
+	
+	//exit(0);
 }
