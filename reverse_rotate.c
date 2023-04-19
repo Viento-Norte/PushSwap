@@ -3,25 +3,24 @@
 
 void static	rev_rot(t_stcklist	**stck, char *str)
 {
-
-t_stcklist	*last;
 t_stcklist	*first;
-int	swap;
+t_stcklist	*last;
 
-if(!(*stck)->next)
+if(!(*stck) || !(*stck)->next )
 	return;
 first = *stck;
-swap = first->num;
+write(1, "AA", 4);
 last = ft_stcklstlast(*stck);
-while((*stck)->next)
+write(1, "\nAA", 4);
+while ((*stck) && (*stck)->next)
 	{
-		(*stck)->num = last->num;
-		*stck = (*stck)->next;
-		last->num = swap;
-		swap = (*stck)->num; 
-	}	
-	(*stck)->num = last->num;
-	*stck = first;
+		if (!((*stck)->next)->next)
+			(*stck)->next = NULL;
+		(*stck) = (*stck)->next;
+	}
+write(1, "BAA", 4);
+last->next = first;
+	*stck = last;
 if(str)
 write(1, str, 4);
 }

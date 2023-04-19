@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/18 19:52:15 by legarcia          #+#    #+#             */
+/*   Updated: 2023/04/19 18:11:59 by legarcia         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include"push_swap.h"
 t_push_swap	*init(int *argc,	char	**argv)
 {
@@ -5,17 +17,19 @@ t_push_swap	*init(int *argc,	char	**argv)
 	int n;
 	pshswp = malloc(sizeof(t_push_swap));
 	if(!pshswp)
-	{
-		write(1, "Error\n", 6);
-		return(NULL);
-	}
+		{
+			write(1, "Error\n", 6);
+			return(NULL);
+		}
 	pshswp->stacka = NULL;
 	pshswp->stackb = NULL;
 	n = 1;
 	pshswp->stacka = newstckelt(ft_atoi(argv[n]));
-while( ++n < *argc)
-	ft_stcklstadd_back(&(pshswp->stacka),newstckelt(ft_atoi(argv[n])));
-return(pshswp);
+	while( ++n < *argc)
+		ft_stcklstadd_back(&(pshswp->stacka),newstckelt(ft_atoi(argv[n])));
+	pshswp->elmntsa = n - 1;
+	pshswp->elmntsb = 0;
+	return(pshswp);
 }
 void	ft_free(t_push_swap	**pshswp)
 {
@@ -68,14 +82,32 @@ int	main (int	argc, char	**argv)
 	printstack(pshswp->stacka);
 	enter();
 	pb(&pshswp);
+	printstack(pshswp->stacka);
+	enter();
+	printstack(pshswp->stackb);
+	enter();
 	pb(&pshswp);
+	printstack(pshswp->stacka);
+	enter();
+	printstack(pshswp->stackb);
+	enter();
+	enter();
+	enter();
+	ft_putnbr_fd(pshswp->elmntsa, 1);
+	enter();
+	ft_putnbr_fd(pshswp->elmntsb, 1);
 	rr(&pshswp);
 	enter();
 	printstack(pshswp->stacka);
 	enter();
 	printstack(pshswp->stackb);
 	enter();
-	ft_putnbr_fd(lst_len(pshswp->stackb), 1);
+	enter();
+	ft_putnbr_fd(pshswp->elmntsa, 1);
+	enter();
+	ft_putnbr_fd(pshswp->elmntsb, 1);
+	//ft_putnbr_fd(lst_len(pshswp->), 1);
+	//ft_putnbr_fd(lst_len(pshswp->stackb), 1);
 	ft_free(&pshswp);
 	
 	//exit(0);

@@ -1,4 +1,19 @@
 #include"push_swap.h"
+int	lst_len(t_stcklist	*list)
+{
+	int	count;
+
+	if (!list)
+		return(0);
+	count = 1;
+	while(list->next)
+	{
+		list = list->next;
+		count++;	
+	}
+	return(count);
+}
+
 //Crea un nuevo elemento para el stack, con el numero number 
 //retorna el puntero a este nuevo elemento
 t_stcklist	*newstckelt(int number)
@@ -25,7 +40,7 @@ t_stcklist	*ft_stcklstlast(t_stcklist *stack)
 	}
 	return (stack);
 }
-
+//agrega el elemento new, a la lista enlazada, en la ultima posicion.
 void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 {
 	t_stcklist	*lst1;
@@ -39,6 +54,7 @@ void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 	else
 	*lst = new;
 }
+//agrega el elemento new, a la lista enlazada, en la primera posicion.
 
 void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 {

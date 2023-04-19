@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: legarcia <legarcia@student.42barcel>       +#+  +:+       +#+        */
+/*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/03/17 19:13:54 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/19 18:10:09 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include<unistd.h>
@@ -27,9 +28,13 @@ typedef struct s_push_wap
 {
 	t_stcklist	*stacka;
 	t_stcklist	*stackb;
+	int			elmntsa;
+	int			elmntsb;
+	int			maxnum;
 }	t_push_swap;
 
 int			ft_checkerr(int argc, char **argv);
+int			lst_len(t_stcklist	*list);
 t_stcklist	*newstckelt(int numb);
 t_stcklist	*ft_stcklstlast(t_stcklist *lst);
 void		ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new);
@@ -50,4 +55,5 @@ void		rrr(t_push_swap	**pshswp);
 ////////////////////debugging elements/////////////
 void		enter(void);
 void		printstack(t_stcklist *stack);
+
 #endif
