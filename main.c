@@ -6,58 +6,33 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 19:52:15 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/19 18:11:59 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/26 23:21:30 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-t_push_swap	*init(int *argc,	char	**argv)
+void ft_sort_2(t_push_swap **pshswp)
 {
-	t_push_swap	*pshswp;
-	int n;
-	pshswp = malloc(sizeof(t_push_swap));
-	if(!pshswp)
-		{
-			write(1, "Error\n", 6);
-			return(NULL);
-		}
-	pshswp->stacka = NULL;
-	pshswp->stackb = NULL;
-	n = 1;
-	pshswp->stacka = newstckelt(ft_atoi(argv[n]));
-	while( ++n < *argc)
-		ft_stcklstadd_back(&(pshswp->stacka),newstckelt(ft_atoi(argv[n])));
-	pshswp->elmntsa = n - 1;
-	pshswp->elmntsb = 0;
-	return(pshswp);
+	int	tmp;
+	tmp =(*pshswp)->stacka->num ; 
+	
+	if((((*pshswp)->stacka->next->num) < tmp ))
+		sa(pshswp);
+
 }
-void	ft_free(t_push_swap	**pshswp)
+void sorter(t_push_swap	**pshswp)
 {
-	t_stcklist	*stack;
-	if (!pshswp)
-		return ;
-	if (((*pshswp)->stacka))
-	{
-		while((*pshswp) && ((*pshswp)->stacka)->next)
-		{
-			stack = ((*pshswp)->stacka)->next;
-			free((*pshswp)->stacka);
-			((*pshswp)->stacka) = stack;
-		}
-		free((*pshswp)->stacka);
-	}
-if (((*pshswp)->stackb))
-{
-		while((*pshswp) && ((*pshswp)->stackb)->next)
-	{
-		stack = ((*pshswp)->stackb)->next;
-		free((*pshswp)->stackb);
-		((*pshswp)->stackb) = stack;
-	}
-	free((*pshswp)->stackb);
-}
-free(*pshswp);
-exit(0);
+	if((*pshswp)->elmntsa== 2)
+		ft_sort_2(pshswp);
+	/*else if((*pshswp)->elmntsa== 3)
+		ft_sort_3(pshswp);
+	else if((*pshswp)->elmntsa== 4)
+		ft_sort_4(pshswp);
+	else if((*pshswp)->elmntsa== 5)
+		ft_sort_5(pshswp);
+	else if((*pshswp)->elmntsa== 6)
+		ft_sort_6(pshswp);
+*/
 }
 
 int	main (int	argc, char	**argv)
@@ -75,40 +50,34 @@ int	main (int	argc, char	**argv)
 		ft_free(&pshswp);		
 		return(write(1, "Error\n", 6));
 		}
-	printstack(pshswp->stacka);
-	enter();
-	rra(&pshswp);
+
+	sorter(&pshswp);
 	
-	printstack(pshswp->stacka);
-	enter();
+	/*printstacks(pshswp);
+	sa(&pshswp);
+	printstacks(pshswp);
 	pb(&pshswp);
-	printstack(pshswp->stacka);
-	enter();
-	printstack(pshswp->stackb);
-	enter();
 	pb(&pshswp);
-	printstack(pshswp->stacka);
-	enter();
-	printstack(pshswp->stackb);
-	enter();
-	enter();
-	enter();
-	ft_putnbr_fd(pshswp->elmntsa, 1);
-	enter();
-	ft_putnbr_fd(pshswp->elmntsb, 1);
+	pb(&pshswp);
+	printstacks(pshswp);
+	sb(&pshswp);
+	printstacks(pshswp);
+	ss(&pshswp);
+	printstacks(pshswp);	
+	pa(&pshswp);
+	printstacks(pshswp);
+	pb(&pshswp);
+	ra(&pshswp);
+	printstacks(pshswp);
+	rb(&pshswp);
+	printstacks(pshswp);
 	rr(&pshswp);
-	enter();
-	printstack(pshswp->stacka);
-	enter();
-	printstack(pshswp->stackb);
-	enter();
-	enter();
-	ft_putnbr_fd(pshswp->elmntsa, 1);
-	enter();
-	ft_putnbr_fd(pshswp->elmntsb, 1);
-	//ft_putnbr_fd(lst_len(pshswp->), 1);
-	//ft_putnbr_fd(lst_len(pshswp->stackb), 1);
+	printstacks(pshswp);
+	rra(&pshswp);
+	printstacks(pshswp);
+	rrb(&pshswp);
+	printstacks(pshswp);
+	rrr(&pshswp);
+	printstacks(pshswp);
 	ft_free(&pshswp);
-	
-	//exit(0);
-}
+	*/}

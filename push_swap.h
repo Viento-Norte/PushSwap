@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/19 18:10:09 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/26 23:05:14 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,12 @@ void		rr(t_push_swap **pshswp);
 void		rra(t_push_swap	**pshswp);
 void		rrb(t_push_swap	**pshswp);
 void		rrr(t_push_swap	**pshswp);
+t_push_swap	*init(int *argc,	char	**argv);
+void		ft_free(t_push_swap	**pshswp);
 //void		rev_rot(t_stcklist	**stck, char *str);
 //void		rev_rot_rot(t_stcklist	**stcka, t_stcklist	**stckb);
 ////////////////////debugging elements/////////////
 void		enter(void);
 void		printstack(t_stcklist *stack);
-
+void	printstacks(t_push_swap *pshswp);
 #endif

@@ -16,9 +16,10 @@ void static	push(t_stcklist	**stckorg, t_stcklist	**stckdst, char *str)
 
 void	pb(t_push_swap	**pshswp)
 {
-	push(&(*pshswp)->stacka, &(*pshswp)->stackb, "pb\n");
+	
 	if((*pshswp)->elmntsb >= 0 && (*pshswp)->elmntsa > 0)
 	{
+		push(&((*pshswp)->stacka), &((*pshswp)->stackb), "pb\n");
 		(*pshswp)->elmntsb +=1;
 		(*pshswp)->elmntsa -=1;
 	}
@@ -27,9 +28,10 @@ void	pb(t_push_swap	**pshswp)
 
 void	pa(t_push_swap	**pshswp)
 {
-	push(&(*pshswp)->stackb, &(*pshswp)->stacka, "pa\n");
+	
 	if((*pshswp)->elmntsa >= 0 && (*pshswp)->elmntsb > 0)
 	{
+		push(&((*pshswp)->stackb), &((*pshswp)->stacka), "pa\n");
 		(*pshswp)->elmntsa +=1;
 		(*pshswp)->elmntsb -=1;
 	}

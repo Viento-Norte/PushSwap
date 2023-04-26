@@ -9,16 +9,13 @@ t_stcklist	*last;
 if(!(*stck) || !(*stck)->next )
 	return;
 first = *stck;
-write(1, "AA", 4);
 last = ft_stcklstlast(*stck);
-write(1, "\nAA", 4);
 while ((*stck) && (*stck)->next)
 	{
 		if (!((*stck)->next)->next)
 			(*stck)->next = NULL;
 		(*stck) = (*stck)->next;
 	}
-write(1, "BAA", 4);
 last->next = first;
 	*stck = last;
 if(str)

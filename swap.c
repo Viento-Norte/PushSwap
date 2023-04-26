@@ -2,33 +2,31 @@
 
 void static	swap_stack(t_stcklist	**stack, char *str)
 {
-	t_stcklist	*swaplst;
-	int			swapint;
-
+	t_stcklist	*tmp;
+	
 	if (!(*stack) || !(*stack)->next)
 		return ;
-	swaplst = (*stack)->next;
-	swapint = (swaplst)->num;
-	swaplst->num = (*stack)->num;
-	(*stack)->num = swapint;
-	write (1, str, 2);
+		
+	tmp = (*stack)->next;
+	(*stack)->next = tmp->next;
+	tmp->next = *(stack);
+	*stack = tmp;
 	if (str)
-		write (1, "\n", 1);
-}
+			write (1, str, 2);
+	}
 
 void	ss(t_push_swap **pshswp)
 {
 	swap_stack(&(*pshswp)->stacka, NULL);
-	swap_stack(&(*pshswp)->stackb, NULL);
-	write (1, "ss\n", 3);
+	swap_stack(&(*pshswp)->stackb, "ss\n");
 }
 
 void	sa(t_push_swap **pshswp)
 {
-	swap_stack(&(*pshswp)->stacka, "sa\n");
+	swap_stack(&((*pshswp)->stacka), "sa\n");
 }
 
 void	sb(t_push_swap **pshswp)
 {
-	swap_stack(&(*pshswp)->stacka, "sb\n");
+	swap_stack(&((*pshswp)->stackb), "sb\n");
 }
