@@ -1,6 +1,20 @@
 #include "push_swap.h"
 ///////////////////Debugging elements/////////////////
-int static	ft_maxnum(t_stcklist	*stack)
+int 	ft_minnum(t_stcklist	*stack)
+{
+	int	tmp;
+	tmp = stack->num;
+	while(stack->next)
+	{
+		stack = stack->next;
+		if (tmp > stack->num)
+			tmp = stack->num;
+	}
+	return(tmp);
+	
+
+}
+int 	ft_maxnum(t_stcklist	*stack)
 {
 	int	tmp;
 	tmp = stack->num;
@@ -33,6 +47,7 @@ t_push_swap	*init(int *argc,	char	**argv)
 	pshswp->elmntsa = n - 1;
 	pshswp->elmntsb = 0;
 	pshswp->maxnum = ft_maxnum(pshswp->stacka);
+	pshswp->minnum = ft_minnum(pshswp->stacka);
 	return(pshswp);
 }
 
@@ -73,13 +88,13 @@ void	printstack(t_stcklist *stack)
 	{
 		ft_putnbr_fd(stack->num, 1);
 		write (1, "\t", 1);
-		ft_putnbr_fd(stack->pos, 1);
+		ft_putnbr_fd(stack->index, 1);
 		enter();
 		stack = stack->next;
 	}
 	ft_putnbr_fd(stack->num, 1);
 	write (1, "\t", 1);
-	ft_putnbr_fd(stack->pos, 1);
+	ft_putnbr_fd(stack->index, 1);
 	enter();
 }
 
@@ -103,6 +118,10 @@ void	printstacks(t_push_swap *pshswp)
 		
 	write(1,"Numero maximo: ",15);
 	ft_putnbr_fd((pshswp)->maxnum, 1);
+	enter();
+
+	write(1,"Numero minimo: ",15);
+	ft_putnbr_fd((pshswp)->minnum, 1);
 	enter();
 	
 	write(1,"Elementos en StackA: ",21);

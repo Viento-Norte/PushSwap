@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checkin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: legarcia <legarcia@student.42barcel>       +#+  +:+       +#+        */
+/*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 18:14:42 by legarcia          #+#    #+#             */
-/*   Updated: 2023/03/17 19:21:34 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:13:04 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include"push_swap.h"
 
+#include"push_swap.h"
 //retorna 1 si las cadenas de caracteres de str son numeros
 //retorna 0 si las cadenas de carracteres de str son distintas a numeros
 //argc es la cantidad de cadenas de caracteres existentes,
@@ -26,7 +26,7 @@ static int	ft_isnumbers(int argc, char **str)
 	{
 		if (str[x][y] == '\0')
 			return (0);
-		if (str[x][y] == '-' && y == 0 && str[x][y + 1] != '0' && str[x][y + 1])
+		if ((str[x][y] == '-' || str[x][y] == '+') && y == 0 && str[x][y + 1])
 			y++;
 		while (str[x][y])
 		{
@@ -53,8 +53,7 @@ static int	ft_havedupli(int argc, char **argv)
 		y = x ;
 		while (++y < argc)
 		{
-			if (ft_strlen(&argv[x][0]) == ft_strlen(&argv[y][0]) &&
-				!ft_memcmp(&argv[x][0], &argv[y][0], ft_strlen(&argv[y][0])))
+			if (ft_atoi(&argv[x][0]) == ft_atoi(&argv[y][0]))
 				return (1);
 		}
 	}

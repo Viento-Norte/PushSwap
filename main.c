@@ -6,78 +6,98 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 19:52:15 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/26 23:21:30 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/29 20:15:12 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-void ft_sort_2(t_push_swap **pshswp)
+int nextmin(t_stcklist *stack, int min)
 {
-	int	tmp;
-	tmp =(*pshswp)->stacka->num ; 
+
+	write(1,"AQui\n",5);
+	ft_putnbr_fd(min,1);
 	
-	if((((*pshswp)->stacka->next->num) < tmp ))
-		sa(pshswp);
-
+	while(stack && stack->next)
+	{
+		if(stack->index == -1 && stack->num > min && stack->num < tmp )
+			min = stack->num;
+		if(stack->index == -1 && stack->num > min && stack->num < tmp )
+		
+		stack = stack->next;
+	}
+	if(stack->index == -1 && stack->num > min )
+			min = stack->num;
+	return(min);
 }
-void sorter(t_push_swap	**pshswp)
+void	ft_index(t_push_swap	**pshswp)
 {
-	if((*pshswp)->elmntsa== 2)
-		ft_sort_2(pshswp);
-	/*else if((*pshswp)->elmntsa== 3)
-		ft_sort_3(pshswp);
-	else if((*pshswp)->elmntsa== 4)
-		ft_sort_4(pshswp);
-	else if((*pshswp)->elmntsa== 5)
-		ft_sort_5(pshswp);
-	else if((*pshswp)->elmntsa== 6)
-		ft_sort_6(pshswp);
-*/
+int c;
+t_stcklist *tmp;
+int	min;
+tmp = (*pshswp)->stacka;
+min = ft_minnum(tmp);
+ft_putnbr_fd(min,1);
+c = 1;
+while ((*pshswp)->elmntsa <= c)
+{
+while (tmp && tmp->next && (*pshswp)->elmntsa >= c )
+{
+	if (min == tmp->num && c == -1)
+		{
+		tmp->index = c++;
+		break;
+		}
+	tmp = tmp->next;
 }
-
+tmp = (*pshswp)->stacka;
+min = nextmin(tmp, min);
+}	
+}
+int	is_sorter(t_stcklist *stack)
+{
+	
+	while(stack->next)
+	{
+		if((stack->num) > (stack->next)->num)
+			return(0);
+		stack = stack->next;
+	}
+	return(1);
+}
+void ft_sorter(t_push_swap	**pshswp)
+{
+	printstacks(*pshswp);
+}
 int	main (int	argc, char	**argv)
 {
 	t_push_swap	*pshswp;
 	
 	
 	if (ft_checkerr(argc, argv))
-		return(write(1, "Error\n", 6));
-	if (argc <= 2)
+		{
+		write(2, "Error\n", 6);
 		return (0);
-	pshswp = init( &argc,	argv);
+		}
+	if (argc <= 2)
+		return( 0);
+	pshswp = init(&argc, argv);
 	if (!pshswp)
 		{
-		ft_free(&pshswp);		
-		return(write(1, "Error\n", 6));
+		ft_free(&pshswp);
+		write(2, "Error\n", 6);
+		return( 0);
 		}
-
+	ft_index(&pshswp);
 	sorter(&pshswp);
+	printstacks(pshswp);
+
+//	if(is_sorter(pshswp->stacka))
+//		write(1,"Ordenado\n",9);
 	
-	/*printstacks(pshswp);
-	sa(&pshswp);
-	printstacks(pshswp);
-	pb(&pshswp);
-	pb(&pshswp);
-	pb(&pshswp);
-	printstacks(pshswp);
-	sb(&pshswp);
-	printstacks(pshswp);
-	ss(&pshswp);
-	printstacks(pshswp);	
-	pa(&pshswp);
-	printstacks(pshswp);
-	pb(&pshswp);
-	ra(&pshswp);
-	printstacks(pshswp);
-	rb(&pshswp);
-	printstacks(pshswp);
-	rr(&pshswp);
-	printstacks(pshswp);
-	rra(&pshswp);
-	printstacks(pshswp);
-	rrb(&pshswp);
-	printstacks(pshswp);
-	rrr(&pshswp);
-	printstacks(pshswp);
 	ft_free(&pshswp);
-	*/}
+	
+	return( 0);
+	}
+
+
+

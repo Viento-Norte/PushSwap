@@ -12,7 +12,7 @@ void static	swap_stack(t_stcklist	**stack, char *str)
 	tmp->next = *(stack);
 	*stack = tmp;
 	if (str)
-			write (1, str, 2);
+			write (1, str, 3);
 	}
 
 void	ss(t_push_swap **pshswp)

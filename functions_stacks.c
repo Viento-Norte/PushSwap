@@ -6,24 +6,25 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 19:53:22 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/26 23:21:37 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/29 17:39:08 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+
 int	lst_len(t_stcklist	*list)
 {
 	int	count;
 
 	if (!list)
-		return(0);
+		return (0);
 	count = 1;
-	while(list->next)
+	while (list->next)
 	{
 		list = list->next;
-		count++;	
+		count++;
 	}
-	return(count);
+	return (count);
 }
 
 //Crea un nuevo elemento para el stack, con el numero number 
@@ -36,7 +37,7 @@ t_stcklist	*newstckelt(int number)
 	if (!nelt)
 		return (NULL);
 	nelt->num = number;
-	nelt->pos = 1;
+	nelt->index = -1;
 	nelt->next = NULL;
 	return (nelt);
 }
@@ -52,6 +53,7 @@ t_stcklist	*ft_stcklstlast(t_stcklist *stack)
 	}
 	return (stack);
 }
+
 //agrega el elemento new, a la lista enlazada, en la ultima posicion.
 void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 {
@@ -60,7 +62,6 @@ void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 	if (*lst)
 	{
 		lst1 = ft_stcklstlast(*lst);
-		new->pos = lst1->pos + 1;
 		lst1->next = new;
 	}
 	else
@@ -70,19 +71,8 @@ void	ft_stcklstadd_back(t_stcklist **lst, t_stcklist *new)
 
 void	ft_stcklstadd_front(t_stcklist **lst, t_stcklist *new)
 {
-	t_stcklist	*lst_swap;
-
 	if (!lst || !new)
 		return ;
 	new->next = *lst;
-	new->pos = 1;
-	lst_swap = *lst;
-	while (lst_swap && lst_swap->next)
-	{
-		lst_swap->pos += 1;
-		lst_swap = lst_swap->next;
-	}
-	if (lst_swap)
-	lst_swap->pos += 1;
 	*lst = new;
 }
