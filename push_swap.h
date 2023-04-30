@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/29 16:45:34 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/30 12:55:16 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 typedef struct s_stcklist
 {
 	int					num;
-	int					index;
+	long int			index;
 	struct s_stcklist	*next;
 }	t_stcklist;
 
