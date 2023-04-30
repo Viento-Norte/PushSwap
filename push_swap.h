@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/30 12:55:16 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/30 14:22:21 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,14 @@ void		ft_sort_2(t_push_swap **pshswp);
 void		ft_sort_3(t_push_swap **pshswp);
 void		ft_sort_4(t_push_swap **pshswp);
 void		ft_sort_5(t_push_swap **pshswp);
+void		ft_big_sorter(t_push_swap **pshswp);
 void		ft_sort(t_push_swap	**pshswp);
+
 void 		sorter(t_push_swap	**pshswp);
+
 t_push_swap	*init(int *argc,	char	**argv);
 void		ft_free(t_push_swap	**pshswp);
+void		ft_index(t_push_swap	**pshswp);
 //void		rev_rot(t_stcklist	**stck, char *str);
 //void		rev_rot_rot(t_stcklist	**stcka, t_stcklist	**stckb);
 ////////////////////debugging elements/////////////

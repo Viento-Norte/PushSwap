@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 16:38:01 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/29 18:24:20 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/04/30 14:10:01 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ void sorter(t_push_swap	**pshswp)
 		ft_sort_4(pshswp);
 	else if((*pshswp)->elmntsa== 5)
 		ft_sort_5(pshswp);
-	//	else if((*pshswp)->elmntsa > 5)
-  //		sorter(pshswp);
+	else if((*pshswp)->elmntsa > 5)
+  		ft_big_sorter(pshswp);
 }
