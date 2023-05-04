@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/30 14:22:21 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/05/04 17:56:05 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct s_push_wap
 	int			elmntsb;
 	int			maxnum;
 	int			minnum;
+	long		maxindex;
 }	t_push_swap;
 
 int			ft_checkerr(int argc, char **argv);

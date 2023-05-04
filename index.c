@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 13:46:12 by legarcia          #+#    #+#             */
-/*   Updated: 2023/04/30 14:08:36 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/05/04 18:00:06 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ while (tmp)
 }
 tmp = (*pshswp)->stacka;
 min = nextmin((*pshswp)->stacka);
+(*pshswp)->maxindex=(*pshswp)->elmntsa;
 }	
 }
