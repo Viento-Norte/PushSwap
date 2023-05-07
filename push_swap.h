@@ -6,7 +6,7 @@
 /*   By: legarcia <legarcia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 17:30:09 by legarcia          #+#    #+#             */
-/*   Updated: 2023/05/04 17:56:05 by legarcia         ###   ########.fr       */
+/*   Updated: 2023/05/07 21:06:23 by legarcia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ typedef struct s_push_wap
 {
 	t_stcklist	*stacka;
 	t_stcklist	*stackb;
-	int			elmntsa;
-	int			elmntsb;
+	long			elmntsa;
+	long			elmntsb;
 	int			maxnum;
 	int			minnum;
 	long		maxindex;
@@ -60,6 +60,7 @@ void		ft_sort_3(t_push_swap **pshswp);
 void		ft_sort_4(t_push_swap **pshswp);
 void		ft_sort_5(t_push_swap **pshswp);
 void		ft_big_sorter(t_push_swap **pshswp);
+void    ft_giant_sorter(t_push_swap **pshswp);
 void		ft_sort(t_push_swap	**pshswp);
 
 void 		sorter(t_push_swap	**pshswp);
